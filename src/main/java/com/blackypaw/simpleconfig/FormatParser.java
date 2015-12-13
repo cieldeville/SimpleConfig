@@ -47,7 +47,7 @@ class FormatParser {
 		this.tokenizer.ordinaryChars( '.', '.' );
 		this.tokenizer.ordinaryChars( '_', '_' );
 		this.tokenizer.ordinaryChars( '-', '-' );
-		this.tokenizer.wordChars( 'a', 'b' );       // Alowed in names
+		this.tokenizer.wordChars( 'a', 'b' );       // Allowed in names
 		this.tokenizer.wordChars( 'A', 'B' );
 		this.tokenizer.wordChars( '0', '9' );
 		this.tokenizer.wordChars( '_', '_' );

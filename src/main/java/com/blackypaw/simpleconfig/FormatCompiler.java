@@ -5,6 +5,7 @@
 
 package com.blackypaw.simpleconfig;
 
+import com.blackypaw.simpleconfig.annotation.Comment;
 import com.blackypaw.simpleconfig.converter.ConversionException;
 import com.blackypaw.simpleconfig.converter.ConverterFactory;
 import com.blackypaw.simpleconfig.converter.IValueConverter;
@@ -56,12 +57,21 @@ class FormatCompiler {
 		builder.append( '{' );
 		this.lineBreak( builder );
 
-
 		this.identLevel++;
 
 		for ( Field field : item.getClass().getDeclaredFields() ) {
 			if ( Modifier.isStatic( field.getModifiers() ) ) {
 				continue;
+			}
+
+			// Check for Comments
+			if ( field.isAnnotationPresent( Comment.class ) ) {
+				String commentContent = field.getAnnotation( Comment.class ).value();
+				for ( String commentLine : commentContent.split( "\n" ) ) {
+					this.identify( builder );
+					builder.append( "# " ).append( commentLine );
+					this.lineBreak( builder );
+				}
 			}
 
 			field.setAccessible( true );
