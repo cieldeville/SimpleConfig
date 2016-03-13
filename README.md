@@ -32,6 +32,14 @@ try {
 // You may now call config.getMyString() in order to get the configured value
 ```
 
+The configuration file produced by the above class would look like this:
+
+```
+{
+	myString: "defaultValue"
+}
+```
+
 Per default only primitive types as well as strings are supported yet your application may add custom value
 converters in order to support custom types inside your configuration classes.
 
